@@ -1,0 +1,22 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: podinfo-rc
+  namespace: stg
+  labels:
+    chart: podinfo
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: glob:stg-*
+spec:
+  chartGitPath: podinfo
+  releaseName: podinfo-rc
+  values:
+    image: stefanprodan/podinfo:stg-9ij63o4c
+    replicaCount: 2
+    hpa:
+      enabled: true
+      maxReplicas: 10
+      cpu: 50
+      memory: 256Mi

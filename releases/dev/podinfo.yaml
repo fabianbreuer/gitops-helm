@@ -1,0 +1,19 @@
+---
+apiVersion: helm.integrations.flux.weave.works/v1alpha2
+kind: FluxHelmRelease
+metadata:
+  name: podinfo-dev
+  namespace: dev
+  labels:
+    chart: podinfo
+  annotations:
+    flux.weave.works/automated: "true"
+    flux.weave.works/tag.chart-image: glob:dev-*
+spec:
+  chartGitPath: podinfo
+  releaseName: podinfo-dev
+  values:
+    image: stefanprodan/podinfo:dev-jnjzaphx
+    replicaCount: 1
+    hpa:
+      enabled: false
