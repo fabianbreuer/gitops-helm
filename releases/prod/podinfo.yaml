@@ -13,5 +13,5 @@ spec:
   chartGitPath: podinfo
   releaseName: podinfo-prod
   values:
-    image: fabianbreuer/podinfo:0.4.11
+    image: fabianbreuer/podinfo:0.4.10
     replicaCount: 3
